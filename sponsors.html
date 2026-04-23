@@ -12,6 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
   <style>
     :root {
       --bg: #f7f4ee;
@@ -591,54 +593,18 @@
 
     .ticket-spacer { flex: 1; }
 
-    .tier-btn {
+    .stripe-btn-wrap {
+      margin-top: auto;
+      display: flex;
+      justify-content: center;
       width: 100%;
-      border: 1px solid transparent;
-      background: var(--ink);
-      color: white;
-      box-shadow: 0 14px 30px rgba(18,18,18,0.14);
-      cursor: pointer;
     }
-
-    .ticket-card:not(.featured) .tier-btn { background: white; color: var(--ink); border-color: var(--line-strong); box-shadow: none; }
-    .ticket-card.featured .tier-btn { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); }
 
     .proof-band {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       min-height: 100%;
-    }
-
-    .proof-micro {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 16px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-dark);
-    }
-
-    .vendor-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .vendor-chip {
-      border: 1px solid var(--line);
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: white;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #58534e;
     }
 
     .faq-item { min-height: 100%; }
@@ -948,53 +914,76 @@
           </div>
 
           <div class="tickets-wrap">
+            
             <article class="ticket-card">
               <div class="tier-number">Level 1</div>
               <h3>The Seedling</h3>
-              <div class="tier-kicker">$150 — Digital & Kit</div>
-              <p class="ticket-desc">For brands who want their hardware directly in the room with a physical presence. High-visibility integration into the build process.</p>
+              <div class="tier-kicker">$200 — Digital & Kit</div>
+              <p class="ticket-desc">For remote brands who want their hardware directly in the room. High-visibility integration into the physical build process without needing a booth.</p>
               <ul class="ticket-list">
-                <li>6ft draped vendor table in the Pavilion area</li>
-                <li>Collateral (stickers/samples) placed in every staged hardware kit</li>
-                <li>Logo placement on the physical technical spec sheets</li>
+                <li>Collateral (stickers/samples) placed inside every staged modular hardware kit</li>
+                <li>Logo placement on the physical technical spec sheets at each workbench</li>
                 <li>Tagged integration in event build logs (Discord & IG)</li>
-                <li>Newsletter inclusion to our 5,000+ subscriber mailing list</li>
-                <li><em>Note: Does not include t-shirt logo</em></li>
+                <li>Dedicated inclusion in our post-event newsletter to 5,000+ subscribers</li>
+                <li><em>Note: Does not include physical Pavilion space or apparel logo</em></li>
               </ul>
               <div class="ticket-spacer"></div>
-              <a class="tier-btn" href="mailto:admin@pixies-pantry.com?subject=Level%201%20Seedling%20Sponsorship">Apply for Level 1</a>
+              
+              <div class="stripe-btn-wrap">
+                <stripe-buy-button
+                  buy-button-id="buy_btn_1TPTAyPgf6ETeSSJKEpq14U9"
+                  publishable-key="pk_live_51TKWUQPgf6ETeSSJEyWJrTMuNJWuoVaAfgdhWoZfwrYxq7fa8sC4fI1Tx1xdthrZ1jZmrSVP4rOjFSI3ztFmV2iQ00zwHXHeoB"
+                >
+                </stripe-buy-button>
+              </div>
             </article>
 
             <article class="ticket-card featured">
               <div class="tier-number">Level 2</div>
               <h3>The Vegetative</h3>
-              <div class="tier-kicker">$250 — Pop-Up & Shirt</div>
-              <p class="ticket-desc">The active footprint. This tier gets you a physical station to move inventory and long-term brand placement on our clinical apparel.</p>
+              <div class="tier-kicker">$400 — Pop-Up & Shirt</div>
+              <p class="ticket-desc">The active footprint. This tier secures physical real estate to move inventory during the high-conversion post-build window.</p>
               <ul class="ticket-list">
-                <li>Dedicated 6ft station in the post-build Vendor Marketplace</li>
-                <li>Brand logo/name integrated on the back of the official event t-shirt</li>
-                <li>Technical shout-out during the Filtration Physics segment</li>
-                <li>Includes all Level 1 digital and kit benefits</li>
+                <li>Dedicated 6ft draped station in the Pavilion Vendor Marketplace</li>
+                <li>Brand logo integrated on the back of the official clinic t-shirt</li>
+                <li>Technical shout-out during the Filtration Physics & Airflow segment</li>
+                <li>Direct access to attendees actively looking for build upgrades</li>
+                <li>Includes all Level 1 digital and kit integrations</li>
               </ul>
               <div class="ticket-spacer"></div>
-              <a class="tier-btn" href="mailto:admin@pixies-pantry.com?subject=Level%202%20Vegetative%20Sponsorship">Apply for Level 2</a>
+
+              <div class="stripe-btn-wrap">
+                <stripe-buy-button
+                  buy-button-id="buy_btn_1TPTDSPgf6ETeSSJfAWiygC5"
+                  publishable-key="pk_live_51TKWUQPgf6ETeSSJEyWJrTMuNJWuoVaAfgdhWoZfwrYxq7fa8sC4fI1Tx1xdthrZ1jZmrSVP4rOjFSI3ztFmV2iQ00zwHXHeoB"
+                >
+                </stripe-buy-button>
+              </div>
             </article>
 
             <article class="ticket-card">
               <div class="tier-number">Level 3</div>
               <h3>The Bloom</h3>
-              <div class="tier-kicker">$500+ — Title Sponsor</div>
-              <p class="ticket-desc">The financial backbone. For major ecosystem players wanting maximum visibility and a permanent, data-driven hardware audit.</p>
+              <div class="tier-kicker">$850+ — Title Sponsor</div>
+              <p class="ticket-desc">The financial backbone of the clinic. For major ecosystem players who want maximum event visibility and a permanent integration into the Pixie's Pantry network.</p>
               <ul class="ticket-list">
-                <li>Title placement ("Powered by [Brand]") on domain & top spot on shirts</li>
-                <li>Prime, expanded vendor placement within the Pavilion center</li>
-                <li><strong>The Deep Dive Audit:</strong> A full technical teardown of your flagship product published on Pixie’s Pantry</li>
-                <li>Exclusive co-branded social media campaign for 14 days post-event</li>
+                <li>Title placement ("Powered by [Brand]") on domain & top-center on shirts</li>
+                <li>Prime, expanded placement within the Pavilion center</li>
+                <li><strong>The Auditor's Deep Dive:</strong> A full, candid technical teardown of your flagship product published across the Pixie’s Pantry network</li>
+                <li>Post-event shared data capture (opt-in leads from the hardware giveaway)</li>
                 <li>Includes all Level 1 and Level 2 benefits</li>
               </ul>
               <div class="ticket-spacer"></div>
-              <a class="tier-btn" href="mailto:admin@pixies-pantry.com?subject=Level%203%20Bloom%20Sponsorship">Apply for Level 3</a>
+
+              <div class="stripe-btn-wrap">
+                <stripe-buy-button
+                  buy-button-id="buy_btn_1TPTEOPgf6ETeSSJzOsnAsyU"
+                  publishable-key="pk_live_51TKWUQPgf6ETeSSJEyWJrTMuNJWuoVaAfgdhWoZfwrYxq7fa8sC4fI1Tx1xdthrZ1jZmrSVP4rOjFSI3ztFmV2iQ00zwHXHeoB"
+                >
+                </stripe-buy-button>
+              </div>
             </article>
+
           </div>
         </div>
       </section>
@@ -1026,106 +1015,41 @@
               <p>Builds are completed. Attendees transition from workstations to the Vendor Pavilion for upgrades.</p>
             </div>
             <div class="experience-card">
-              <div class="experience-step">7:00</div>
-              <h3>Community Mix</h3>
-              <p>Open floor. High-volume sales and community networking window. Formal event wrap and vendor load-out.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-card">
-          <div class="section-head">
-            <div>
-              <div class="section-label">FAQ</div>
-              <h2 class="section-title">Vendor Questions.</h2>
-            </div>
-            <p class="section-copy">Straight answers regarding the logistics of the event.</p>
-          </div>
-
-          <div class="faq-grid">
-            <div class="faq-item">
-              <h3>What are the print deadlines?</h3>
-              <p>To guarantee placement on the official event apparel (Level 2 and Level 3), your sponsorship must be locked in and vector files submitted by May 20th.</p>
-            </div>
-            <div class="faq-item">
-              <h3>What is provided for my booth?</h3>
-              <p>All partners receive dedicated floorspace, a table, and access to a pavilion area. You are responsible for your own POS system, display cases, and product inventory.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Can I share a booth?</h3>
-              <p>Yes. We’re open to brands sharing a space as long as the setup is handled tastefully and maintains our clean, clinical aesthetic. Quality and presentation are the priority here.</p>
+              <div class="experience-step">7:30</div>
+              <h3>Breakdown</h3>
+              <p>Event concludes. Vendor load-out begins. High-conversion window closes.</p>
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <section class="footer-cta-wrap">
-      <div class="shell">
-        <div class="footer-cta-box">
-          <div class="eyebrow"><span class="dot"></span> Vendor Cutoff</div>
-          <h2>Secure your placement before the May 20th deadline.</h2>
-          <p>We strictly cap the number of vendors to ensure the marketplace isn't diluted and our partners see an actual return on their investment. Once the slots are full, or the print deadline passes, we lock the roster.</p>
-          <div class="action-row">
-            <a class="footer-btn" href="mailto:admin@pixies-pantry.com?subject=Sponsorship%20Inquiry%20-%20Build-A-Bong%20Workshop">Email admin@pixies-pantry.com →</a>
-            <a class="btn-secondary" href="https://shop.pixiespantryshop.com" target="_blank" rel="noopener noreferrer">View Main Store</a>
-          </div>
-          <div class="footer-note">Event Date: May 30 • 5–7 PM • 21+ • Oxford, MS</div>
-          <div class="footer-links">
-            <a href="https://discord.gg/SvQQtHHk" target="_blank" rel="noopener noreferrer">Discord Community</a>
-            <a href="https://www.youtube.com/channel/UCpQhd79nWMsFnwZgI_Okeuw" target="_blank" rel="noopener noreferrer">YouTube</a>
-            <a href="https://www.instagram.com/pixiespantryshop/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </div>
+    <section class="footer-cta-wrap shell">
+      <div class="footer-cta-box">
+        <h2>Secure the Floor.</h2>
+        <p>Our footprint is strictly limited to maintain a high-signal environment for both builders and vendors. Once the Pavilion is mapped out, no further partner slots will be allocated.</p>
+        <div class="action-row">
+          <a class="footer-btn" href="mailto:admin@pixies-pantry.com?subject=Sponsorship%20Inquiry%20-%20Build-A-Bong%20Workshop">Email to Secure Spot →</a>
+          <div class="footer-note">All partnership invoices are processed via secure portal. Net-0 terms.</div>
+        </div>
+        <div class="footer-links">
+          <a href="https://shop.pixiespantryshop.com">Main Store</a>
+          <a href="https://pixiespantryshop.com">Brand Hub</a>
+          <a href="https://pixies-pantry.com">Business Specs</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="global-footer">
-    <div class="shell footer-inner">
-      <div class="footer-copy">
-        &copy; 2026 Pixie's Pantry. All rights reserved.
-      </div>
+  <footer class="global-footer shell">
+    <div class="footer-inner">
+      <div class="footer-copy">© 2026 Pixie's Pantry. All rights reserved. Age Verification Required.</div>
       <div class="legal-links">
-        <a href="https://shop.pixiespantryshop.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="https://shop.pixiespantryshop.com/policies/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+        <a href="https://discord.gg/SvQQtHHk" target="_blank" rel="noopener">Discord Community</a>
+        <a href="https://www.youtube.com/channel/UCpQhd79nWMsFnwZgI_Okeuw" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.instagram.com/pixiespantryshop/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const topbar = document.querySelector('.topbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) {
-          topbar.classList.add('scrolled');
-        } else {
-          topbar.classList.remove('scrolled');
-        }
-      }, { passive: true });
-
-      const ticketLink = document.querySelector('a[href="#tiers"]');
-      if (ticketLink) {
-        ticketLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          const target = document.getElementById('tiers');
-          if (target) {
-            const offset = 100; 
-            const bodyRect = document.body.getBoundingClientRect().top;
-            const elementRect = target.getBoundingClientRect().top;
-            const elementPosition = elementRect - bodyRect;
-            const offsetPosition = elementPosition - offset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-          }
-        });
-      }
-    });
-  </script>
 </body>
 </html>
