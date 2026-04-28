@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware Registration | Build-A-Bong Workshop | Pixie's Pantry</title>
+  <meta name="description" content="Secure your hardware track for the Build-A-Bong Workshop in Oxford, MS. Choose between Standard, Curator, and Engineer tiers." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#111111" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --paper: #fffdfa;
+      --ink: #121212;
+      --muted: #6d675f;
+      --line: rgba(18,18,18,0.10);
+      --line-strong: rgba(18,18,18,0.18);
+      --accent: #d4720a;
+      --accent-dark: #aa5600;
+      --soft: #f3e2cd;
+      --success: #d8ead8;
+      --shadow: 0 20px 60px rgba(0,0,0,0.08);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top right, rgba(212,114,10,0.08), transparent 28%), var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .shell { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    /* Topbar - Pulled from index.html */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(247,244,238,0.82);
+      border-bottom: 1px solid rgba(18,18,18,0.06);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .topbar.scrolled {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .topbar-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    /* Registration Styles */
+    .header {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(12px);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+    }
+
+    .header p {
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: var(--muted);
+    }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .tier-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+    }
+
+    .tier-card.featured {
+      background: #111111;
+      color: white;
+      border-color: rgba(212,114,10,0.38);
+    }
+
+    .tier-card.featured::before {
+      content: "Sweet Spot";
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 999px;
+    }
+
+    .tier-label {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .tier-card h2 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .tier-price {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 12px 0 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .tier-price span {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .tier-card.featured .tier-price span { color: rgba(255,255,255,0.5); }
+
+    .tier-desc {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .tier-card.featured .tier-desc { color: rgba(255,255,255,0.7); }
+
+    .tier-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      flex-grow: 1;
+    }
+
+    .tier-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 14px;
+      margin-bottom: 12px;
+      color: #444;
+    }
+
+    .tier-card.featured .tier-list li { color: rgba(255,255,255,0.85); }
+
+    .tier-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .btn-checkout {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      background: var(--ink);
+      color: white;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .tier-card.featured .btn-checkout {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    }
+
+    .btn-checkout:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .addon-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .addon-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+
+    .addon-info h3 { margin: 0; font-size: 16px; letter-spacing: -0.02em; }
+    .addon-info p { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+    
+    .btn-addon {
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid var(--line-strong);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .btn-addon:hover {
+      background: var(--ink);
+      color: white;
+    }
+
+    .next-steps {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 48px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .step-item { display: flex; gap: 24px; }
+    .step-num { 
+      flex-shrink: 0; width: 40px; height: 40px; background: var(--soft); color: var(--accent-dark); 
+      display: flex; align-items: center; justify-content: center; border-radius: 12px; font-weight: 900; font-size: 16px;
+    }
+    .step-content h4 { margin: 0 0 8px; font-size: 18px; letter-spacing: -0.02em; }
+    .step-content p { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+    .auditor-note {
+      background: rgba(18,18,18,0.03);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 32px;
+      margin-bottom: 60px;
+    }
+
+    .auditor-note h3 {
+      margin: 0 0 12px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .auditor-note p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Footer - Pulled from index.html */
+    .footer-cta-wrap { padding: 18px 0 48px; }
+
+    .footer-cta-box {
+      border: 1px solid var(--line);
+      border-radius: 38px;
+      padding: 36px;
+      background: linear-gradient(145deg, #151515 0%, #0f0f0f 55%, #1e1a13 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .footer-cta-box::after {
+      content: "";
+      position: absolute;
+      width: 360px; height: 360px; right: -110px; top: -110px;
+      background: radial-gradient(circle, rgba(212,114,10,0.28), rgba(212,114,10,0));
+    }
+
+    .footer-cta-box h2 {
+      position: relative; z-index: 1; margin: 0 0 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      line-height: 0.95; letter-spacing: -0.05em; max-width: 11ch;
+    }
+
+    .footer-cta-box p {
+      position: relative; z-index: 1; margin: 0 0 22px;
+      max-width: 640px; color: rgba(255,255,255,0.76); font-size: 16px;
+    }
+
+    .footer-cta-box .action-row {
+      position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+    }
+
+    .footer-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 56px; padding: 0 24px; border-radius: 999px;
+      font-size: 12px; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      color: white; transition: all 0.2s ease;
+    }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 56px; padding: 0 24px; border-radius: 999px;
+      font-size: 12px; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.2); color: white; transition: all 0.2s ease;
+    }
+
+    .footer-btn:hover, .btn-secondary:hover { transform: translateY(-2px); }
+
+    .footer-links {
+      display: flex; flex-wrap: wrap; gap: 18px; margin-top: 24px; position: relative; z-index: 1;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.62); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+
+    .global-footer { border-top: 1px solid var(--line); padding: 32px 0; text-align: center; margin-top: 24px; }
+    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .legal-links a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line-strong); margin: 0 8px; font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .tier-grid, .addon-row, .next-steps { grid-template-columns: 1fr; }
+      .header { padding-top: 40px; }
+      .footer-cta-box .action-row { flex-direction: column; align-items: stretch; }
+      .footer-btn, .btn-secondary { width: 100%; }
+      .nav-links { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar">
+    <div class="shell topbar-inner">
+      <a href="https://shop.pixiespantryshop.com" class="brand">
+        <div class="brand-mark">
+          <img src="https://i.imgur.com/vmJPD4c.png" alt="Pixie's Pantry Logo" />
+        </div>
+        <div class="brand-copy">
+          <strong>Pixie's Pantry</strong>
+          <span>Workshop Portal</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#tiers" class="nav-link">Tickets</a>
+        <a href="index.html" class="nav-link">← Back to Info</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="header shell">
+    <div class="eyebrow"><span class="dot"></span> Oxford, MS • May 30 • Hardware Tiers</div>
+    <h1>Secure Your Bench.</h1>
+    <p>Every registration includes a reserved bench seat, guided assembly session, airflow verification, and a complete modular hardware setup to take home.</p>
+  </header>
+
+  <main class="shell">
+    <!-- Pricing Grid -->
+    <div id="tiers" class="tier-grid">
+      <article class="tier-card">
+        <div class="tier-label">Tier 1</div>
+        <h2>Standard Issue</h2>
+        <div class="tier-price">$100 <span>+Tax</span></div>
+        <p class="tier-desc">The hardware workhorse. A robust daily driver that focuses on pure utility and consistent draw performance.</p>
+        <ul class="tier-list">
+          <li>Base Modular Setup</li>
+          <li>Standard Perc Configuration</li>
+          <li>Reserved Bench Seat</li>
+          <li>Guided Build Support</li>
+        </ul>
+        <a href="https://checkout.pixiespantryshop.com/b/3cI14p8OS4Ks9T7cjm1Fe05" class="btn-checkout">Register Standard Track</a>
+      </article>
+
+      <article class="tier-card featured">
+        <div class="tier-label">Tier 2</div>
+        <h2>The Curator</h2>
+        <div class="tier-price">$160 <span>+Tax</span></div>
+        <p class="tier-desc">The Auditor's Choice. Upgraded percolation paths and refined aesthetics for a nuanced airflow experience.</p>
+        <ul class="tier-list">
+          <li>Upgraded Percolation Path</li>
+          <li>Refined Hardware Aesthetics</li>
+          <li>Full Clinical Experience</li>
+          <li>Enhanced Stress-Testing</li>
+        </ul>
+        <a href="https://checkout.pixiespantryshop.com/b/bJe3cxaX01yg0ix4QU1Fe06" class="btn-checkout">Register Curator Track</a>
+      </article>
+
+      <article class="tier-card">
+        <div class="tier-label">Tier 3</div>
+        <h2>The Engineer</h2>
+        <div class="tier-price">$200 <span>+Tax</span></div>
+        <p class="tier-desc">Maximum Control. Independent selection of base, perc, and mouthpiece for precise customization.</p>
+        <ul class="tier-list">
+          <li>Advanced Multi-Stage Config</li>
+          <li>1-on-1 Build Troubleshooting</li>
+          <li>Custom Physics Audit</li>
+          <li>Premium Component Finish</li>
+        </ul>
+        <a href="https://checkout.pixiespantryshop.com/b/dRm9AV1mq6SA9T76Z21Fe07" class="btn-checkout">Register Engineer Track</a>
+      </article>
+    </div>
+
+    <!-- Event Add-ons -->
+    <div class="addon-row">
+      <div class="addon-card">
+        <div class="addon-info">
+          <h3>Boston Butt Roast + Corn Plate</h3>
+          <p>Local Oxford BBQ catering on-site at the Pavilion.</p>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 16px; font-weight: 800; margin-bottom: 8px;">$10</div>
+          <a href="https://checkout.pixiespantryshop.com/b/your-stripe-food-id" class="btn-addon">Add Plate</a>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-info">
+          <h3>Spectator Pass</h3>
+          <p>Entry for +1 partner. No hardware included.</p>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 16px; font-weight: 800; margin-bottom: 8px;">Free</div>
+          <a href="https://checkout.pixiespantryshop.com/b/your-stripe-spectator-id" class="btn-addon">Reserve Pass</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next Steps Section -->
+    <section class="next-steps">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h4>Digital Spec Sheet</h4>
+          <p>Within 24 hours of payment, you'll receive an email to "spec your build." You choose your glass colors and percolator styles so we can stage your bench, or you can choose to be surprised.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h4>Clinical Verification</h4>
+          <p>On May 30th, you'll arrive at your staged workstation. We guide the assembly, verify every seal, and stress-test the airflow live on the bench.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operational Note -->
+    <section class="auditor-note">
+      <h3>Operational Transparency</h3>
+      <p>By moving registration to this portal, we bypass standard third-party ticketing platform fees to maintain an "at-cost" hardware value for our community. <strong>Requirement:</strong> This is a strict 21+ event. IDs will be verified at the door; no entry or refunds without valid verification. Registration is non-refundable after May 20th.</p>
+    </section>
+  </main>
+
+  <!-- Footer CTA - Pulled from index.html -->
+  <section class="footer-cta-wrap">
+    <div class="shell">
+      <div class="footer-cta-box">
+        <div class="eyebrow"><span class="dot"></span> Support & Community</div>
+        <h2>Join the hardware discussion.</h2>
+        <p>If you have technical questions about the tiers or want to see past builds, our Discord community is the best place for real-time answers.</p>
+        <div class="action-row">
+          <a class="footer-btn" href="https://discord.gg/PKdv2HwTxt" target="_blank" rel="noopener noreferrer">Join Discord</a>
+          <a class="btn-secondary" href="https://shop.pixiespantryshop.com" target="_blank" rel="noopener noreferrer">Shop Store</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://discord.gg/PKdv2HwTxt" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="https://www.youtube.com/channel/UCpQhd79nWMsFnwZgI_Okeuw" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://www.instagram.com/pixiespantryshop/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="global-footer">
+    <div class="shell footer-inner">
+      <div class="footer-copy">
+        &copy; 2026 Pixie's Pantry. All rights reserved.
+      </div>
+      <div class="legal-links">
+        <a href="https://shop.pixiespantryshop.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://shop.pixiespantryshop.com/policies/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+        <a href="mailto:admin@pixies-pantry.com">Contact Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const topbar = document.querySelector('.topbar');
+      if (window.scrollY > 10) {
+        topbar.classList.add('scrolled');
+      } else {
+        topbar.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
