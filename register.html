@@ -167,6 +167,45 @@
       color: var(--muted);
     }
 
+    /* Technical Integrity Section */
+    .integrity-section {
+      background: #111;
+      color: white;
+      border-radius: var(--radius-xl);
+      padding: 60px 40px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .integrity-copy h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin: 0 0 20px; line-height: 1; }
+    .integrity-copy p { font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+    
+    .spec-badges { display: flex; flex-wrap: wrap; gap: 12px; }
+    .spec-badge {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .visual-placeholder {
+      background: radial-gradient(circle at center, #222, #111);
+      border-radius: 24px;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+
     .tier-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -344,6 +383,28 @@
       color: white;
     }
 
+    /* Schedule Section */
+    .schedule-wrap {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 48px;
+      margin-bottom: 40px;
+    }
+
+    .schedule-wrap h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin: 0 0 32px; letter-spacing: -0.03em; }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .schedule-item { border-left: 2px solid var(--soft); padding-left: 20px; }
+    .schedule-time { font-weight: 900; font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .schedule-label { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+    .schedule-desc { font-size: 14px; color: var(--muted); line-height: 1.4; }
+
     .next-steps {
       background: white;
       border: 1px solid var(--line);
@@ -455,11 +516,12 @@
     .legal-links a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line-strong); margin: 0 8px; font-size: 13px; }
 
     @media (max-width: 900px) {
-      .tier-grid, .addon-row, .next-steps { grid-template-columns: 1fr; }
+      .tier-grid, .addon-row, .next-steps, .integrity-section, .schedule-grid { grid-template-columns: 1fr; }
       .header { padding-top: 40px; }
       .footer-cta-box .action-row { flex-direction: column; align-items: stretch; }
       .footer-btn, .btn-secondary { width: 100%; }
       .nav-links { gap: 16px; }
+      .schedule-item { margin-bottom: 24px; }
     }
   </style>
 </head>
@@ -490,6 +552,56 @@
   </header>
 
   <main class="shell">
+
+    <!-- Technical Integrity Section -->
+    <section class="integrity-section">
+      <div class="integrity-copy">
+        <div class="tier-label" style="color: var(--accent);">Auditor's Standards</div>
+        <h2>Clinical Build Quality.</h2>
+        <p>We don't do "decorative" glass. Every component used in the workshop is verified Borosilicate 3.3, selected for thermal shock resistance and wall thickness consistency. Our modular hardware uses clinical-grade seals to ensure zero vacuum leaks during draw.</p>
+        <div class="spec-badges">
+          <div class="spec-badge">BORO 3.3 GLASS</div>
+          <div class="spec-badge">STRESS-TESTED SEALS</div>
+          <div class="spec-badge">MODULAR ARCHITECTURE</div>
+          <div class="spec-badge">ISO-CERTIFIED COMPONENTS</div>
+        </div>
+      </div>
+      <div class="visual-placeholder">
+        <!-- 3-Part Modular Hardware Architecture Outline -->
+        <svg width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.85;">
+          <!-- Part 3: Mouthpiece Section (Top) -->
+          <g id="mouthpiece">
+            <rect x="110" y="15" width="20" height="6" rx="1.5" stroke="white" stroke-width="1.5"/>
+            <path d="M112 21V50M128 21V50" stroke="white" stroke-width="1.5"/>
+            <!-- Joint Indicator -->
+            <path d="M108 50H132L128 55H112L108 50Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="1"/>
+          </g>
+
+          <!-- Part 2: Ball Percolator Section (Middle) -->
+          <g id="perc-chamber">
+            <path d="M112 58V75M128 58V75" stroke="white" stroke-width="1.5"/>
+            <!-- Ball Percolator -->
+            <circle cx="120" cy="85" r="16" stroke="white" stroke-width="1.2" stroke-dasharray="3 2"/>
+            <circle cx="120" cy="85" r="4" fill="white" fill-opacity="0.4"/>
+            <!-- Joints -->
+            <path d="M112 95V105M128 95V105" stroke="white" stroke-width="1.5"/>
+            <path d="M108 105H132L128 110H112L108 105Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="1"/>
+          </g>
+
+          <!-- Part 1: Beaker Base Section (Bottom) -->
+          <g id="beaker-base">
+            <path d="M112 115L85 165H155L128 115" stroke="white" stroke-width="2" fill="white" fill-opacity="0.05"/>
+            <!-- Downstem Ref -->
+            <line x1="120" y1="115" x2="105" y2="145" stroke="white" stroke-width="1" opacity="0.3"/>
+          </g>
+          
+          <!-- Connective Axis Line -->
+          <line x1="120" y1="15" x2="120" y2="165" stroke="white" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.2"/>
+        </svg>
+        <div style="position: absolute; bottom: 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.4);">3-Part Modular Architecture</div>
+      </div>
+    </section>
+
     <!-- Pricing Grid -->
     <div id="tiers" class="tier-grid">
       <article class="tier-card">
@@ -558,6 +670,33 @@
         </div>
       </div>
     </div>
+
+    <!-- Schedule Section -->
+    <section class="schedule-wrap">
+      <h2>Workshop Timeline.</h2>
+      <div class="schedule-grid">
+        <div class="schedule-item">
+          <div class="schedule-time">5:00 PM</div>
+          <div class="schedule-label">Bench Intro</div>
+          <div class="schedule-desc">Hardware staging and bench protocol overview.</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">5:30 PM</div>
+          <div class="schedule-label">Live Assembly</div>
+          <div class="schedule-desc">Guided modular assembly and seal verification.</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">6:15 PM</div>
+          <div class="schedule-label">Physics Audit</div>
+          <div class="schedule-desc">Live airflow stress-testing and perc optimization.</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">7:00 PM</div>
+          <div class="schedule-label">BBQ Social</div>
+          <div class="schedule-desc">Catered dinner and hardware discussion.</div>
+        </div>
+      </div>
+    </section>
 
     <!-- Next Steps Section -->
     <section class="next-steps">
