@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Build-A-Bong Quote | Pixie's Pantry</title>
+  <meta name="description" content="Request a detailed Build-A-Bong event quote from Pixie's Pantry. Fill out event details, guest count, pricing preferences, build options, upgrades, and theme ideas." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Pixie's Pantry" />
+  <meta name="theme-color" content="#111111" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --paper: #fffdfa;
+      --ink: #121212;
+      --muted: #6d675f;
+      --line: rgba(18,18,18,0.10);
+      --line-strong: rgba(18,18,18,0.18);
+      --accent: #d4720a;
+      --accent-dark: #aa5600;
+      --soft: #f3e2cd;
+      --shadow: 0 20px 60px rgba(0,0,0,0.08);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top right, rgba(212,114,10,0.08), transparent 28%), var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(247,244,238,0.82);
+      border-bottom: 1px solid rgba(18,18,18,0.06);
+    }
+
+    .topbar-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: white;
+      flex: 0 0 auto;
+    }
+
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .top-cta, .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: transform .18s ease, box-shadow .18s ease;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .top-cta {
+      background: var(--ink);
+      color: white;
+      box-shadow: 0 12px 30px rgba(18,18,18,0.14);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      box-shadow: 0 16px 34px rgba(212,114,10,0.24);
+    }
+
+    .top-cta:hover, .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(18,18,18,0.16);
+    }
+
+    .hero { padding: 56px 0 26px; }
+
+    .hero-card, .form-card, .side-card, .notice-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      border-radius: 40px;
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -50px -90px auto;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(212,114,10,0.18), rgba(212,114,10,0));
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(212,114,10,0.55);
+      animation: pulse 1.9s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(212,114,10,0.55); }
+      70% { box-shadow: 0 0 0 12px rgba(212,114,10,0); }
+      100% { box-shadow: 0 0 0 0 rgba(212,114,10,0); }
+    }
+
+    h1 {
+      margin: 18px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.9rem);
+      line-height: 0.93;
+      letter-spacing: -0.055em;
+      max-width: 11ch;
+    }
+
+    .accent { color: var(--accent); font-style: italic; font-weight: 700; }
+
+    .hero-sub {
+      max-width: 760px;
+      font-size: clamp(1rem, 1.55vw, 1.22rem);
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(18,18,18,0.98), rgba(18,18,18,0.92));
+      color: white;
+      border-radius: 32px;
+      padding: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-panel h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-panel p { color: rgba(255,255,255,0.76); margin: 0 0 16px; }
+
+    .panel-list { display: grid; gap: 10px; margin-top: 18px; }
+    .panel-item {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.82);
+      font-size: 14px;
+    }
+    .panel-item strong { color: white; display: block; margin-bottom: 2px; }
+
+    .layout {
+      padding: 18px 0 56px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .form-card, .side-card, .notice-card {
+      border-radius: var(--radius-xl);
+      padding: 30px;
+    }
+
+    .section-label {
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 760px;
+    }
+
+    .form-section {
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .form-section:first-of-type { border-top: 0; padding-top: 0; }
+
+    .form-section h3 {
+      margin: 0 0 14px;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .form-grid.full { grid-template-columns: 1fr; }
+
+    label {
+      display: grid;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: #4f4a44;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.86);
+      border-radius: 16px;
+      padding: 14px 14px;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(212,114,10,0.65);
+      box-shadow: 0 0 0 4px rgba(212,114,10,0.10);
+      background: white;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .check {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.62);
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+    }
+
+    .check input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--accent);
+    }
+
+    .side-stack { display: grid; gap: 16px; position: sticky; top: 104px; }
+
+    .side-card {
+      background: linear-gradient(180deg, #141414, #202020);
+      color: white;
+    }
+
+    .side-card h3, .notice-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .side-card p { color: rgba(255,255,255,0.72); margin: 0; font-size: 14px; }
+    .notice-card p { color: var(--muted); margin: 0; font-size: 14px; }
+
+    .mini-list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mini-list li {
+      position: relative;
+      padding-left: 20px;
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+    }
+
+    .mini-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .fine-print {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 940px) {
+      .hero-card, .layout { grid-template-columns: 1fr; }
+      .side-stack { position: static; }
+    }
+
+    @media (max-width: 620px) {
+      .shell { width: min(var(--max), calc(100% - 22px)); }
+      .hero { padding: 30px 0 18px; }
+      .hero-card, .form-card, .side-card, .notice-card { border-radius: 26px; padding: 22px; }
+      h1 { font-size: clamp(3rem, 18vw, 4.4rem); }
+      .form-grid, .check-grid { grid-template-columns: 1fr; }
+      .topbar-inner { min-height: 72px; }
+      .brand-copy span { display: none; }
+      .top-cta { padding: 0 14px; min-height: 44px; font-size: 10px; }
+    }
+  
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-link {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover { color: var(--accent); }
+
+    @media (max-width: 940px) {
+      .nav-links { display: none; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top" aria-label="Pixie's Pantry quote request home">
+        <div class="brand-mark"><img src="https://i.imgur.com/vmJPD4c.png" alt="Pixie's Pantry logo" /></div>
+        <div class="brand-copy">
+          <strong>Pixie's Pantry</strong>
+          <span>Build-A-Bong Quote Form</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="pricing.html">Pricing</a>
+        <a class="nav-link" href="quote.html">Quote Form</a>
+      </nav>
+      <a class="top-cta" href="#quote-form">Start Form</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-card">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Request a detailed quote</div>
+          <h1>Tell us about your <span class="accent">Build-A-Bong</span> event.</h1>
+          <p class="hero-sub">Fill this out once so Pixie's Pantry has your event type, city, date, guest count, payment plan, build menu, upgrades, venue details, and your choice from 30+ themes before we reply.</p>
+          <a class="top-cta" href="#quote-form">Fill Out the Form</a>
+        </div>
+
+        <aside class="hero-panel">
+          <h2>This sends the details to Pixie's Pantry.</h2>
+          <p>Use this form for private parties, birthdays, dispensary pop-ups, retail events, vendor markets, and group build experiences.</p>
+          <div class="panel-list">
+            <div class="panel-item"><strong>Base builds:</strong> $40–$60 per guest</div>
+            <div class="panel-item"><strong>Dual-use rig builds:</strong> $80–$85 total per guest</div>
+            <div class="panel-item"><strong>Premium dual-use builds:</strong> $90–$95 total per guest</div>
+            <div class="panel-item"><strong>Fully built-out builds:</strong> $110–$120 total per guest</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="shell layout">
+      <section class="form-card" id="quote-form">
+        <div class="section-label">Quote Request Form</div>
+        <h2 class="section-title">Build-A-Bong Event Details</h2>
+        <p class="section-copy">The more details you include, the faster we can quote your event. Required fields are marked with an asterisk.</p>
+
+        <!--
+          Static email form:
+          This uses FormSubmit. First submission may require email verification.
+          Destination: admin@pixies-pantry.com
+        -->
+        <form action="https://formsubmit.co/admin@pixies-pantry.com" method="POST">
+          <input type="hidden" name="_subject" value="NEW BUILD-A-BONG QUOTE REQUEST" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="true" />
+          <input type="hidden" name="_next" value="thank-you.html" />
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
+          <div class="form-section">
+            <h3>1. Contact Info</h3>
+            <div class="form-grid">
+              <label>Full Name *
+                <input type="text" name="Full Name" required />
+              </label>
+              <label>Email *
+                <input type="email" name="Email" required />
+              </label>
+              <label>Phone Number *
+                <input type="tel" name="Phone Number" required />
+              </label>
+              <label>Business Name, if any
+                <input type="text" name="Business Name" />
+              </label>
+              <label>Social Media Link
+                <input type="url" name="Social Media Link" placeholder="Instagram, Facebook, website, etc." />
+              </label>
+              <label>Best Way to Contact You
+                <select name="Best Contact Method">
+                  <option>Email</option>
+                  <option>Phone call</option>
+                  <option>Text</option>
+                  <option>Instagram / Facebook</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>2. Event Basics</h3>
+            <div class="form-grid">
+              <label>Event Type *
+                <select name="Event Type" required>
+                  <option value="">Choose one</option>
+                  <option>Private party</option>
+                  <option>Birthday</option>
+                  <option>Dispensary pop-up</option>
+                  <option>Retail pop-up</option>
+                  <option>Vendor event</option>
+                  <option>Market</option>
+                  <option>Group workshop</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label>City + State *
+                <input type="text" name="City and State" required placeholder="Oxford, MS" />
+              </label>
+              <label>Venue Name or Address
+                <input type="text" name="Venue Name or Address" />
+              </label>
+              <label>Preferred Event Date *
+                <input type="date" name="Preferred Event Date" required />
+              </label>
+              <label>Backup Date
+                <input type="date" name="Backup Date" />
+              </label>
+              <label>Preferred Time of Day
+                <select name="Preferred Time of Day">
+                  <option>Flexible</option>
+                  <option>Morning</option>
+                  <option>Afternoon</option>
+                  <option>Evening</option>
+                </select>
+              </label>
+              <label>Estimated Guest Count *
+                <input type="number" name="Estimated Guest Count" min="1" required />
+              </label>
+              <label>Public or Private?
+                <select name="Public or Private">
+                  <option>Private</option>
+                  <option>Public</option>
+                  <option>Ticketed</option>
+                  <option>Invite-only</option>
+                  <option>Business pop-up</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>3. Payment Setup</h3>
+            <div class="form-grid full">
+              <label>How do you want payment handled? *
+                <select name="Payment Setup" required>
+                  <option value="">Choose one</option>
+                  <option>Guests pay individually</option>
+                  <option>Host pays for the group</option>
+                  <option>Business pays for the group</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>4. Build Menu Interest</h3>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="Build Menu Interest" value="$40–$60 base builds" /> $40–$60 base builds</label>
+              <label class="check"><input type="checkbox" name="Build Menu Interest" value="$80–$85 dual-use rig builds" /> $80–$85 dual-use rig builds</label>
+              <label class="check"><input type="checkbox" name="Build Menu Interest" value="$90–$95 premium dual-use rig builds" /> $90–$95 premium dual-use rig builds</label>
+              <label class="check"><input type="checkbox" name="Build Menu Interest" value="$110–$120 fully built-out builds" /> $110–$120 fully built-out builds</label>
+              <label class="check"><input type="checkbox" name="Build Menu Interest" value="Mixed menu" /> Mixed menu</label>
+              <label class="check"><input type="checkbox" name="Build Menu Interest" value="Need help choosing" /> Need help choosing</label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>5. Upgrade Interest</h3>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Ash catchers" /> Ash catchers</label>
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Premium bowls" /> Premium bowls</label>
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Cute carb caps" /> Cute carb caps</label>
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Quartz bangers" /> Quartz bangers</label>
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Dab tools" /> Dab tools</label>
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Terp pearls" /> Terp pearls</label>
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Charms" /> Charms</label>
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Grinders" /> Grinders</label>
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Other accessories" /> Other accessories</label>
+              <label class="check"><input type="checkbox" name="Upgrade Interest" value="Not sure yet" /> Not sure yet</label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>6. Theme + Vibe</h3>
+            <div class="form-grid">
+              <label>Choose a Theme *
+                <select name="Chosen Build-A-Bong Theme" required>
+                  <option value="">Choose one</option>
+                  <option>Not sure yet — help me pick</option>
+                  <option>Custom theme — I want to describe my own</option>
+                  <option>Other — my idea is not listed</option>
+                  <option>Birthday Build Bar</option>
+                  <option>Botanical Garden</option>
+                  <option>Cottagecore</option>
+                  <option>Spooky / Halloween</option>
+                  <option>Gothic Garden</option>
+                  <option>Witchy Moon</option>
+                  <option>Pretty Pieces</option>
+                  <option>Pink Party</option>
+                  <option>Emerald & Gold</option>
+                  <option>Sage & Cream</option>
+                  <option>Retro 70s</option>
+                  <option>Disco Smoke Lounge</option>
+                  <option>Y2K Glam</option>
+                  <option>Cosmic / Galaxy</option>
+                  <option>Alien / Space</option>
+                  <option>Mushroom Forest</option>
+                  <option>Fairy Garden</option>
+                  <option>Southern Porch Sesh</option>
+                  <option>Mississippi Made</option>
+                  <option>Ole Miss / Hotty Toddy Inspired</option>
+                  <option>Game Day Build Bar</option>
+                  <option>Couples Night</option>
+                  <option>Girls' Night</option>
+                  <option>Bachelor / Bachelorette Party</option>
+                  <option>420-Friendly Hardware Education Theme</option>
+                  <option>Dispensary Customer Appreciation</option>
+                  <option>Retail Pop-Up / Brand Activation</option>
+                  <option>Medical Hardware Education</option>
+                  <option>Terpene Aroma Bar Add-On</option>
+                  <option>Flower Setup Theme</option>
+                  <option>Concentrate Setup Theme</option>
+                  <option>Dual-Use Rig Theme</option>
+                  <option>Budget Builds Theme</option>
+                  <option>Premium Pretty Pieces Theme</option>
+                  <option>Holiday Party</option>
+                  <option>Christmas / Winter Build Bar</option>
+                  <option>Valentine's Build Bar</option>
+                  <option>Spring Garden Party</option>
+                  <option>Summer Festival</option>
+                  <option>Dark Botanical</option>
+                </select>
+              </label>
+              <label>Event Colors
+                <input type="text" name="Event Colors" placeholder="Example: sage, cream, gold" />
+              </label>
+            </div>
+            <div class="form-grid full" style="margin-top:16px;">
+              <label>Describe Your Theme / Other Idea
+                <textarea name="Theme Notes and Custom Idea" placeholder="If you chose Custom, Other, or Not Sure Yet, describe what you want here. Tell us the vibe, colors, occasion, characters, holiday, brand colors, guest personality, or anything you want the table to feel like."></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>7. Logistics</h3>
+            <div class="form-grid">
+              <label>Indoor or Outdoor?
+                <select name="Indoor or Outdoor">
+                  <option>Indoor</option>
+                  <option>Outdoor</option>
+                  <option>Both</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+              <label>Will you provide a table?
+                <select name="Table Provided">
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Maybe</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+              <label>Parking / Loading Access
+                <select name="Parking or Loading Access">
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+              <label>Power Available?
+                <select name="Power Available">
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-grid full" style="margin-top:16px;">
+              <label>Anything Else We Should Know?
+                <textarea name="Additional Notes" placeholder="Venue rules, timing, expected crowd, accessibility, special requests, or anything else."></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>8. Compliance Acknowledgment</h3>
+            <label class="check">
+              <input type="checkbox" name="Compliance Acknowledgment" value="Acknowledged" required />
+              I understand Pixie's Pantry provides legal hardware, education, setup support, and event materials only. Pixie's Pantry does not sell, provide, serve, or distribute cannabis, THC, nicotine, tobacco, or controlled substances.
+            </label>
+          </div>
+
+          <button class="submit-btn" type="submit">Send My Build-A-Bong Quote Request</button>
+          <p class="fine-print">This form sends your quote request to admin@pixies-pantry.com. First-time FormSubmit use may ask the site owner to verify the destination email before messages are delivered.</p>
+        </form>
+      </section>
+
+      <aside class="side-stack">
+        <div class="side-card">
+          <h3>What happens next?</h3>
+          <p>Pixie's Pantry reviews your event details, guest count, location, payment setup, build menu, upgrades, and theme notes.</p>
+          <ul class="mini-list">
+            <li>We confirm availability.</li>
+            <li>We recommend the right package.</li>
+            <li>We explain base pricing vs upgrades.</li>
+            <li>We review your chosen theme or custom theme idea.</li>
+            <li>We help decide individual pay or group invoice.</li>
+          </ul>
+        </div>
+
+        <div class="notice-card">
+          <h3>Pricing reminder</h3>
+          <p>Base builds start at $40–$60 per guest. Dual-use rig builds are usually $80–$85 total. Premium dual-use builds are usually $90–$95 total. Fully built-out builds may run $110–$120 depending on upgrades and inventory.</p>
+        </div>
+
+        <div class="notice-card">
+          <h3>For best quote</h3>
+          <p>Include your city, preferred date, guest count, payment plan, chosen theme, custom theme notes, and whether guests want base builds, dual-use rigs, or premium upgrades.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

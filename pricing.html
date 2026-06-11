@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build-A-Bong Pricing Explained | Pixie's Pantry</title>
+  <meta name="description" content="A simple, no-confusion breakdown of Build-A-Bong event pricing from Pixie's Pantry. Base builds start at $40–$60 per guest, with optional upgrades like ash catchers, carb caps, bangers, and premium dual-use rig builds." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Pixie's Pantry" />
+  <meta name="theme-color" content="#111111" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --paper: #fffdfa;
+      --ink: #121212;
+      --muted: #6d675f;
+      --line: rgba(18,18,18,0.10);
+      --line-strong: rgba(18,18,18,0.18);
+      --accent: #d4720a;
+      --accent-dark: #aa5600;
+      --soft: #f3e2cd;
+      --success: #d8ead8;
+      --shadow: 0 20px 60px rgba(0,0,0,0.08);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top right, rgba(212,114,10,0.08), transparent 28%), var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .shell { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(247,244,238,0.82);
+      border-bottom: 1px solid rgba(18,18,18,0.06);
+    }
+
+    .topbar-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: white;
+      flex: 0 0 auto;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .top-cta, .btn-primary, .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .top-cta, .btn-primary {
+      background: var(--ink);
+      color: white;
+      box-shadow: 0 12px 30px rgba(18,18,18,0.14);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      box-shadow: 0 16px 34px rgba(212,114,10,0.24);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line-strong);
+      background: white;
+      color: var(--ink);
+    }
+
+    .top-cta:hover, .btn-primary:hover, .btn-secondary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(18,18,18,0.16);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(12px);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(212,114,10,0.55);
+      animation: pulse 1.9s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(212,114,10,0.55); }
+      70% { box-shadow: 0 0 0 12px rgba(212,114,10,0); }
+      100% { box-shadow: 0 0 0 0 rgba(212,114,10,0); }
+    }
+
+    .hero { padding: 56px 0 28px; }
+
+    .hero-card, .section-card, .math-card, .price-card, .faq-item, .footer-cta-box {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      border-radius: 40px;
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 28px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -50px -90px auto;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(212,114,10,0.18), rgba(212,114,10,0));
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 18px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.9rem);
+      line-height: 0.93;
+      letter-spacing: -0.055em;
+      max-width: 10.8ch;
+    }
+
+    .accent { color: var(--accent); font-style: italic; font-weight: 700; }
+    .hero-sub {
+      max-width: 740px;
+      font-size: clamp(1rem, 1.55vw, 1.22rem);
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .summary-box {
+      background: linear-gradient(180deg, rgba(18,18,18,0.98), rgba(18,18,18,0.92));
+      color: white;
+      border-radius: 32px;
+      padding: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .summary-box h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .summary-box p { color: rgba(255,255,255,0.76); margin: 0 0 16px; }
+
+    .summary-list { display: grid; gap: 10px; margin-top: 18px; }
+    .summary-item {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.82);
+      font-size: 14px;
+    }
+    .summary-item strong { color: white; display: block; margin-bottom: 2px; }
+
+    .stack { padding: 18px 0 0; }
+    .stack > section { padding: 18px 0; }
+    .section-card { border-radius: var(--radius-xl); padding: 32px; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.55rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .section-copy { max-width: 780px; font-size: 17px; color: var(--muted); }
+
+    .simple-grid, .math-grid, .upgrade-grid, .faq-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .simple-grid { grid-template-columns: repeat(3, 1fr); }
+    .math-grid { grid-template-columns: repeat(2, 1fr); }
+    .upgrade-grid { grid-template-columns: repeat(4, 1fr); }
+    .faq-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .price-card, .math-card, .faq-item {
+      border-radius: 26px;
+      padding: 24px;
+    }
+
+    .price-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .price-card.featured, .math-card.featured {
+      background: linear-gradient(180deg, #141414, #202020);
+      color: white;
+      border-color: rgba(212,114,10,0.36);
+    }
+
+    .price-card.featured p, .price-card.featured li, .math-card.featured p, .math-card.featured li {
+      color: rgba(255,255,255,0.74);
+    }
+
+    .price-number {
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.055em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .price-card h3, .math-card h3, .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .price-card p, .math-card p, .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .formula {
+      margin: 18px 0;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(212,114,10,0.10);
+      border: 1px solid rgba(212,114,10,0.16);
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .math-card.featured .formula {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.12);
+      color: white;
+    }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+      display: grid;
+      gap: 9px;
+    }
+
+    ul.clean li {
+      position: relative;
+      padding-left: 22px;
+      color: #4f4a44;
+      font-size: 14px;
+    }
+
+    ul.clean li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .plain-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid var(--line);
+    }
+
+    .plain-table th, .plain-table td {
+      text-align: left;
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .plain-table th {
+      background: #151515;
+      color: white;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .plain-table tr:last-child td { border-bottom: none; }
+    .plain-table strong { display: block; margin-bottom: 3px; }
+
+    .callout {
+      margin-top: 20px;
+      border-radius: 26px;
+      padding: 24px;
+      background: linear-gradient(135deg, rgba(243,226,205,0.8), rgba(255,255,255,0.84));
+      border: 1px solid var(--line);
+    }
+
+    .callout h3 { margin: 0 0 8px; font-size: 1.35rem; letter-spacing: -0.03em; }
+    .callout p { margin: 0; color: var(--muted); }
+
+    .footer { padding: 36px 0 56px; }
+    .footer-cta-box {
+      border-radius: 38px;
+      padding: 34px;
+      background: linear-gradient(135deg, #111, #1c1c1c);
+      color: white;
+      display: grid;
+      grid-template-columns: 1.2fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .footer-cta-box h2 {
+      margin: 0 0 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 4.2rem);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+    }
+
+    .footer-cta-box p { margin: 0; color: rgba(255,255,255,0.72); max-width: 760px; }
+
+    .legal-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.56);
+      font-size: 12px;
+      max-width: 920px;
+    }
+
+    @media (max-width: 940px) {
+      .hero-card, .section-head, .footer-cta-box { grid-template-columns: 1fr; }
+      .simple-grid, .math-grid, .upgrade-grid, .faq-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      .shell { width: min(var(--max), calc(100% - 22px)); }
+      .hero { padding: 30px 0 22px; }
+      .hero-card, .section-card, .footer-cta-box { border-radius: 26px; padding: 22px; }
+      .simple-grid, .math-grid, .upgrade-grid, .faq-grid { grid-template-columns: 1fr; }
+      .topbar-inner { min-height: 72px; }
+      .brand-copy span { display: none; }
+      .top-cta { padding: 0 14px; min-height: 44px; font-size: 10px; }
+      h1 { font-size: clamp(3rem, 18vw, 4.4rem); }
+      .plain-table th, .plain-table td { padding: 13px; }
+    }
+  
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-link {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover { color: var(--accent); }
+
+    @media (max-width: 940px) {
+      .nav-links { display: none; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top" aria-label="Pixie's Pantry pricing explainer home">
+        <div class="brand-mark"><img src="https://i.imgur.com/vmJPD4c.png" alt="Pixie's Pantry logo" /></div>
+        <div class="brand-copy">
+          <strong>Pixie's Pantry</strong>
+          <span>Pricing Explained</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="pricing.html">Pricing</a>
+        <a class="nav-link" href="quote.html">Quote Form</a>
+      </nav>
+      <a class="top-cta" href="quote.html">Book With Us</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-card">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> ELI5 Pricing Guide</div>
+          <h1>No confusion. <span class="accent">Here is how pricing works.</span></h1>
+          <p class="hero-sub">The Build-A-Bong event has a base price, then guests can choose optional upgrades. Think of it like ordering food: everyone starts with the main plate, then they can add extras if they want a bigger or fancier build.</p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#examples">Show Me Examples</a>
+            <a class="btn-secondary" href="#full-menu">See Upgrade Menu</a>
+          </div>
+        </div>
+
+        <aside class="summary-box">
+          <h2>The easiest way to understand it:</h2>
+          <p><strong>Base Build + Optional Upgrades = Your Total</strong></p>
+          <div class="summary-list">
+            <div class="summary-item"><strong>Base builds start at $40–$60.</strong> This gets the guest into the event and gives them a complete build experience.</div>
+            <div class="summary-item"><strong>Upgrades are optional.</strong> Ash catchers, carb caps, premium bowls, bangers, pearls, and tools cost extra only if the guest chooses them.</div>
+            <div class="summary-item"><strong>Dual-use rig builds start around $80–$85.</strong> That means a basic build upgraded with a banger and carb cap.</div>
+            <div class="summary-item"><strong>Premium dual-use builds are usually $90–$95.</strong> That means a nicer base, premium quartz banger, and one of the best carb caps.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="stack">
+      <section id="base">
+        <div class="shell section-card">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Step 1</div>
+              <h2 class="section-title">Everybody starts with a base build.</h2>
+            </div>
+            <p class="section-copy">The base build is the starting price for the event. It covers the hands-on build experience, the standard setup, guidance, and the guest leaving with a finished piece.</p>
+          </div>
+
+          <div class="simple-grid">
+            <article class="price-card">
+              <div class="price-number">$40</div>
+              <h3>Basic Base Build</h3>
+              <p>The simple entry option for guests who want to participate, build something, and keep the price lower.</p>
+              <ul class="clean">
+                <li>Good for budget-friendly events</li>
+                <li>Good for larger groups</li>
+                <li>Good for guests who may not want upgrades</li>
+              </ul>
+            </article>
+
+            <article class="price-card featured">
+              <div class="price-number">$50</div>
+              <h3>Standard / Prettier Base Build</h3>
+              <p>The middle option for guests who want a better-looking base, a stronger table presence, or a more complete-feeling build.</p>
+              <ul class="clean">
+                <li>Good default recommendation</li>
+                <li>Good for themed parties</li>
+                <li>Good starting point for dual-use builds</li>
+              </ul>
+            </article>
+
+            <article class="price-card">
+              <div class="price-number">$60</div>
+              <h3>Premium Base Build</h3>
+              <p>The higher base option for events with prettier pieces, stronger styling, or more premium inventory.</p>
+              <ul class="clean">
+                <li>Good for premium parties</li>
+                <li>Good for photo-friendly setups</li>
+                <li>Good for guests who want the best base first</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="callout">
+            <h3>Plain English:</h3>
+            <p>If someone only wants the regular Build-A-Bong experience, they usually pay somewhere between <strong>$40 and $60</strong>. That is the starting price before any fancy extras.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="upgrades">
+        <div class="shell section-card">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Step 2</div>
+              <h2 class="section-title">Then guests choose if they want upgrades.</h2>
+            </div>
+            <p class="section-copy">Upgrades are not required. They are for guests who want a more customized piece, a smoother-looking setup, or a dual-use flower/concentrate-ready build.</p>
+          </div>
+
+          <div class="upgrade-grid">
+            <article class="price-card">
+              <div class="price-number">$20–$25</div>
+              <h3>Ash Catchers</h3>
+              <p>Adds a bigger visual upgrade and extra filtration-style hardware to the build.</p>
+            </article>
+
+            <article class="price-card">
+              <div class="price-number">$10–$15</div>
+              <h3>Premium Bowls</h3>
+              <p>For guests who want a cuter, nicer, or more themed flower bowl than the basic option.</p>
+            </article>
+
+            <article class="price-card featured">
+              <div class="price-number">$25</div>
+              <h3>Cute Carb Caps</h3>
+              <p>Needed for many dab-style setups and also adds personality to the finished build.</p>
+            </article>
+
+            <article class="price-card">
+              <div class="price-number">$10–$15</div>
+              <h3>Quartz Bangers</h3>
+              <p>Used to turn a basic compatible build into a dual-use rig setup.</p>
+            </article>
+          </div>
+
+          <div class="callout">
+            <h3>Plain English:</h3>
+            <p>The base build is the main price. Upgrades are like add-ons. A guest can keep their build simple, or they can add parts to make it bigger, cuter, or more premium.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="examples">
+        <div class="shell section-card">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Real Examples</div>
+              <h2 class="section-title">Here is exactly how totals are made.</h2>
+            </div>
+            <p class="section-copy">These examples are the easiest way to explain pricing. Guests do not need to guess. They pick a base, then add upgrades if they want them.</p>
+          </div>
+
+          <div class="math-grid">
+            <article class="math-card">
+              <h3>Example 1: Simple Base Build</h3>
+              <p>Guest wants the regular experience with no upgrades.</p>
+              <div class="formula">$40–$60 base build = $40–$60 total</div>
+              <ul class="clean">
+                <li>Best for guests who want to keep it simple</li>
+                <li>No premium upgrades added</li>
+                <li>Clear budget-friendly option</li>
+              </ul>
+            </article>
+
+            <article class="math-card featured">
+              <h3>Example 2: Basic Dual-Use Rig Build</h3>
+              <p>Guest wants a basic bong build plus a banger and carb cap.</p>
+              <div class="formula">$40–$45 base + $10–$15 banger + $25 carb cap = about $80–$85 total</div>
+              <ul class="clean">
+                <li>Best public-facing price: $80–$85</li>
+                <li>Good for flower-friendly or concentrate-ready setups</li>
+                <li>This is the easiest dual-use package to sell</li>
+              </ul>
+            </article>
+
+            <article class="math-card featured">
+              <h3>Example 3: Premium Dual-Use Rig Build</h3>
+              <p>Guest wants a nicer base, premium quartz banger, and one of the best carb caps.</p>
+              <div class="formula">$50–$55 premium base + $15 premium quartz banger + $25 carb cap = about $90–$95 total</div>
+              <ul class="clean">
+                <li>Best premium package price: $90–$95</li>
+                <li>Great for guests who want the most complete setup</li>
+                <li>Best option for premium table inventory</li>
+              </ul>
+            </article>
+
+            <article class="math-card">
+              <h3>Example 4: Fully Built-Out Guest Choice</h3>
+              <p>Guest wants a premium base, banger, carb cap, and ash catcher.</p>
+              <div class="formula">$90–$95 premium dual-use build + $20–$25 ash catcher = about $110–$120 total</div>
+              <ul class="clean">
+                <li>Best for guests who want the biggest upgrade path</li>
+                <li>Not required for the event</li>
+                <li>Available only while premium inventory lasts</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="full-menu">
+        <div class="shell section-card">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Simple Menu</div>
+              <h2 class="section-title">The no-confusion pricing menu.</h2>
+            </div>
+          </div>
+
+          <table class="plain-table">
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>What it means</th>
+                <th>Price / Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Base Build</strong>Regular event build</td>
+                <td>Guest joins the Build-A-Bong event and leaves with a complete basic build.</td>
+                <td><strong>$40–$60</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Premium Bowl Upgrade</strong>Cuter flower bowl</td>
+                <td>Guest swaps or upgrades to a cuter, themed, or more premium bowl option.</td>
+                <td><strong>+$10–$15</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Ash Catcher Upgrade</strong>Bigger hardware add-on</td>
+                <td>Guest adds an ash catcher to make the build look more complete and upgraded.</td>
+                <td><strong>+$20–$25</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Quartz Banger Upgrade</strong>Dab rig hardware</td>
+                <td>Guest adds a banger to make the setup concentrate-ready when paired with the right build.</td>
+                <td><strong>+$10–$15</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Cute Carb Cap</strong>Premium dab add-on</td>
+                <td>Guest adds a carb cap for a dab-style setup and a cuter finished look.</td>
+                <td><strong>+$25</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Basic Dual-Use Rig Build</strong>Base + banger + carb cap</td>
+                <td>A simple compatible build upgraded with a banger and carb cap.</td>
+                <td><strong>$80–$85 total</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Premium Dual-Use Rig Build</strong>Premium base + premium quartz + best carb cap</td>
+                <td>The nicer dual-use setup for guests who want the most complete build.</td>
+                <td><strong>$90–$95 total</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Fully Built-Out Build</strong>Premium dual-use + ash catcher</td>
+                <td>The premium setup plus an ash catcher for guests who want the biggest build.</td>
+                <td><strong>$110–$120 total</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <h3>Important note:</h3>
+            <p>Prices depend on what inventory is available at that event. Guests can always ask what is included before they upgrade. No one has to upgrade. The base build is enough to participate.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="host">
+        <div class="shell section-card">
+          <div class="section-head">
+            <div>
+              <div class="section-label">For Hosts</div>
+              <h2 class="section-title">How to explain it to your group.</h2>
+            </div>
+          </div>
+
+          <div class="simple-grid">
+            <article class="price-card">
+              <h3>If guests pay individually</h3>
+              <p>Tell guests: “The event starts at $40–$60 per person. You can keep your build basic or bring extra money for upgrades.”</p>
+            </article>
+
+            <article class="price-card featured">
+              <h3>If the host pays as a group</h3>
+              <p>Pick the base level you want covered for everyone. Guests can still pay separately for optional upgrades if you allow it.</p>
+            </article>
+
+            <article class="price-card">
+              <h3>If it is a business pop-up</h3>
+              <p>Promote the base price clearly, then list upgrades as optional at the table so customers understand the full range.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="shell section-card">
+          <div class="section-head">
+            <div>
+              <div class="section-label">FAQ</div>
+              <h2 class="section-title">Pricing questions answered before they ask.</h2>
+            </div>
+          </div>
+
+          <div class="faq-grid">
+            <div class="faq-item"><h3>Do I have to upgrade?</h3><p>No. Upgrades are optional. The base build is enough to participate in the event.</p></div>
+            <div class="faq-item"><h3>Why does the price say $40–$60?</h3><p>Because different events may use different base pieces, themes, guest counts, and setup needs.</p></div>
+            <div class="faq-item"><h3>What is a dual-use rig build?</h3><p>It is a compatible base build upgraded with a banger and carb cap so it can be built toward a concentrate-ready setup.</p></div>
+            <div class="faq-item"><h3>Why is the dual-use rig $80–$85?</h3><p>Because it adds a banger and carb cap to the base build. The rounded package price keeps the math simple.</p></div>
+            <div class="faq-item"><h3>Why is the premium one $90–$95?</h3><p>Because it uses a nicer base, a premium quartz banger, and one of the best carb caps available at the event.</p></div>
+            <div class="faq-item"><h3>Can prices change?</h3><p>Yes, based on inventory, travel, theme, guest count, and special requests. The published ranges help guests plan before booking.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer">
+        <div class="shell footer-cta-box">
+          <div>
+            <h2>Want a quote with the right pricing menu?</h2>
+            <p>Send your city, date, estimated guest count, base build level, and whether you want dual-use rig upgrades, ash catchers, premium bowls, or carb caps available at the table.</p>
+            <p class="legal-note">Pixie's Pantry provides legal hardware, education, setup support, and event materials only. Pixie's Pantry does not sell, provide, serve, or distribute cannabis, THC, nicotine, tobacco, or controlled substances. Hosts are responsible for their venue rules and local requirements.</p>
+          </div>
+          <a class="btn-primary" href="quote.html">Request Quote</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
